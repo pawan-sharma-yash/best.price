@@ -20,11 +20,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct Best_PriceApp: App {
-    // https://stackoverflow.com/a/62633158/1568609
-    @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
-    var body: some Scene {
-        WindowGroup {
-            LoginView()
-        }
+  // https://stackoverflow.com/a/62633158/1568609
+  @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
+  var body: some Scene {
+    WindowGroup {
+      LoginView()
     }
+  }
 }

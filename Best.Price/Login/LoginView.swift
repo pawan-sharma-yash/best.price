@@ -8,91 +8,73 @@
 import SwiftUI
 
 struct LoginView: View {
-    @ObservedObject var viewModel = LoginViewModel()
+  @ObservedObject var viewModel = LoginViewModel()
 
-    var body: some View {
-        Form {
-            ViewFactory.avatarView()
-            ViewFactory.emailInputField($viewModel.email)
-            ViewFactory.passwordInputField($viewModel.password)
-            VStack {
-                Spacer(minLength: 20)
-                HStack(alignment: .center) {
-                    rememberMeButton()
-                    Spacer()
-                    forgotPasswordButton()
-                }
-                Spacer(minLength: 20)
-                HStack {
-                    loginButton()
-                    Spacer()
-                    signUpButton()
-                }
-                Spacer(minLength: 20)
-            }
+  var body: some View {
+    Form {
+      Section {
+        VStack(alignment: .leading) {
+          EmailInputField(text: $viewModel.email)
+          if let emailError = viewModel.emailError {
+            Text(emailError)
+              .foregroundColor(.red)
+          }
         }
+        
+        VStack(alignment: .leading) {
+          PasswordInputField(text: $viewModel.password)
+          if let passwordError = viewModel.passwordError {
+            Text(passwordError)
+              .foregroundColor(.red)
+          }
+        }
+      }
+      Section {
+        VStack {
+          Spacer(minLength: 20)
+          HStack {
+            loginButton()
+            Spacer()
+            signUpButton()
+          }
+          Spacer(minLength: 20)
+          if let loginError = viewModel.loginError {
+            Text(loginError)
+              .foregroundColor(.red)
+          }
+        }
+      }
     }
+  }
 }
 
 // private extension for components
 private extension LoginView {
-    func loginButton() -> some View {
-        Button(action: {
-            Task {
-                do {
-                    let result = try await viewModel.signInUser(WithAuthProvider: .credentials)
-                    print("Result = ", result, "description = ", result.description, result.user)
-                } catch let userSignInError {
-                    print("Firebase Error = ", userSignInError)
-                }
-            }
-        }) {
-            Text("Login")
-                .authButtonDecoration()
-        }
-        .disabled(!viewModel.isCredentialsValid)
+  func loginButton() -> some View {
+    Button(action: {
+      viewModel.signInUser(with: .credentials)
+    }) {
+      Text("Login")
+        .authButtonDecoration()
     }
+  }
 
-    func signUpButton() -> some View {
-        Button(action: {
-            Task {
-                do {
-                    let result = try await viewModel.createUser(withAuthProvider: .credentials)
-                    print("Result = ", result, "description = ", result.description)
-                } catch let accountCreationError {
-                    print("Firebase Error = ", accountCreationError)
-                }
-            }
-        }) {
-            Text("Create Account")
-                .authButtonDecoration()
-        }
-        .disabled(!viewModel.isCredentialsValid)
+  func signUpButton() -> some View {
+    Button(action: {
+      viewModel.createUser(with: .credentials)
+    }) {
+      Text("Create Account")
+        .authButtonDecoration()
     }
-
-    func rememberMeButton() -> some View {
-        Button(action: {
-            // TODO: Implement login logic
-        }) {
-            Text("Remember me")
-        }
-    }
-
-    func forgotPasswordButton() -> some View {
-        Button(action: {
-            // TODO: Implement login logic
-        }) {
-            Text("Forgot Password?")
-        }
-    }
+  }
 }
 
 private extension View where Self == Text {
-    func authButtonDecoration() -> some View {
-        padding([.bottom, .top], 10)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .foregroundColor(.white)
-            .background(Color.blue)
-            .cornerRadius(10)
-    }
+  func authButtonDecoration() -> some View {
+    padding([.bottom, .top], 10)
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .foregroundColor(.white)
+      .background(Color.blue)
+      .cornerRadius(10)
+  }
 }

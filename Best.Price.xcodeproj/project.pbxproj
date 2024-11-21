@@ -141,7 +141,9 @@
 				1710C2392ABE0AEA008A551B /* Best.PriceUITests */,
 				1710C21D2ABE0AE8008A551B /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		1710C21D2ABE0AE8008A551B /* Products */ = {
 			isa = PBXGroup;
