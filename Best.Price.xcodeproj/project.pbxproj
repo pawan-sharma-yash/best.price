@@ -48,6 +48,7 @@
 		F2D546A82CFF443B008D9719 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D546A72CFF443B008D9719 /* HomeView.swift */; };
 		F2D546AA2CFF4454008D9719 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D546A92CFF4454008D9719 /* HomeViewModel.swift */; };
 		F2D546AC2D0043CD008D9719 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D546AB2D0043CD008D9719 /* NotesView.swift */; };
+		F2D546AF2D01AF00008D9719 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D546AE2D01AF00008D9719 /* AppRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		F2D546A72CFF443B008D9719 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F2D546A92CFF4454008D9719 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		F2D546AB2D0043CD008D9719 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
+		F2D546AE2D01AF00008D9719 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 		1710C21E2ABE0AE8008A551B /* Best.Price */ = {
 			isa = PBXGroup;
 			children = (
+				F2D546AD2D01AEF8008D9719 /* Router */,
 				1794E83A2B1A066600F51148 /* Utilities */,
 				17B574D92AED365D0075709F /* UIComponents */,
 				F2D546A62CFF4425008D9719 /* Home */,
@@ -234,6 +237,14 @@
 				F2D546A92CFF4454008D9719 /* HomeViewModel.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		F2D546AD2D01AEF8008D9719 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				F2D546AE2D01AF00008D9719 /* AppRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,6 +415,7 @@
 				F2D546AA2CFF4454008D9719 /* HomeViewModel.swift in Sources */,
 				1794E83C2B1A067900F51148 /* Validator.swift in Sources */,
 				F2D546A82CFF443B008D9719 /* HomeView.swift in Sources */,
+				F2D546AF2D01AF00008D9719 /* AppRouter.swift in Sources */,
 				1710C2202ABE0AE8008A551B /* Best_PriceApp.swift in Sources */,
 				F2D546AC2D0043CD008D9719 /* NotesView.swift in Sources */,
 				179C42C12ACB312000DFD2F5 /* LoginViewModel.swift in Sources */,

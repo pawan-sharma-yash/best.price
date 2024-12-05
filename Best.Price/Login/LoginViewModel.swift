@@ -15,7 +15,6 @@ final class LoginViewModel: ObservableObject {
   @Published var emailError: String?
   @Published var passwordError: String?
   @Published var loginError: String?
-
   @Published var isCredentialsValid = false
 
   private var cancellables = Set<AnyCancellable>()
@@ -41,7 +40,7 @@ final class LoginViewModel: ObservableObject {
     // Email validation error handling
     $email
       .dropFirst() // you ignore the first empty value that it gets initialised with
-      .debounce(for: 0.6, scheduler: RunLoop.main) // you give the user a bit of time to finish typing
+      .debounce(for: 0.3, scheduler: RunLoop.main) // you give the user a bit of time to finish typing
       .removeDuplicates() // you get rid of duplicated inputs as they do not change anything in terms of validation
       .map { [weak self] in
         self?.emailErrorMessage(isValid: Validator.isValidEmail($0)) }
@@ -51,7 +50,7 @@ final class LoginViewModel: ObservableObject {
     // Password validation error handling
     $password
       .dropFirst() // you ignore the first empty value that it gets initialised with
-      .debounce(for: 0.6, scheduler: RunLoop.main) // you give the user a bit of time to finish typing
+      .debounce(for: 0.3, scheduler: RunLoop.main) // you give the user a bit of time to finish typing
       .removeDuplicates() // you get rid of duplicated inputs as they do not change anything in terms of validation
       .map { [weak self] in
         self?.passwordErrorMessage(isValid: Validator.isValidPassword($0)) }
