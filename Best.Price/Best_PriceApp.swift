@@ -18,14 +18,40 @@ class AppDelegate: NSObject, UIApplicationDelegate {
   }
 }
 
+final class AppRouter: ObservableObject {
+  @Published var currentView: String = "LoginView" // Default to LoginView
+
+  func navigateToHome() {
+    currentView = "HomeView"
+  }
+
+  func navigateToLogin() {
+    currentView = "LoginView"
+  }
+}
+
 @main
 struct Best_PriceApp: App {
   // https://stackoverflow.com/a/62633158/1568609
   @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
-  @State private var isLoggedIn = false
+
+  @StateObject var router = AppRouter()
+
   var body: some Scene {
     WindowGroup {
-      LoginView()
+      NavigationStack {
+        switch router.currentView {
+        case "HomeView":
+          HomeView()
+            .onAppear { /* Load user data */ }
+        case "LoginView":
+          LoginView()
+            .onAppear { /* Prepare login */ }
+        default:
+          LoginView()
+        }
+      }
     }
+    .environmentObject(router)
   }
 }

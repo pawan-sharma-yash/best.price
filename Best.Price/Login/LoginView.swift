@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
-  @ObservedObject var viewModel = LoginViewModel()
-  @State private var navigateToHome = false
+  @StateObject var viewModel = LoginViewModel()
+  @EnvironmentObject var router: AppRouter
 
   var body: some View {
     NavigationStack {
@@ -36,9 +36,6 @@ struct LoginView: View {
             Spacer(minLength: 20)
             HStack {
               loginButton()
-                .navigationDestination(isPresented: self.$navigateToHome) {
-                  HomeView()
-                }
               Spacer()
               signUpButton()
             }
@@ -58,7 +55,8 @@ struct LoginView: View {
 private extension LoginView {
   func loginButton() -> some View {
     Button(action: {
-      self.navigateToHome = true
+      // self.viewModel.signInUser(with: .credentials)
+      router.navigateToHome()
     }) {
       Text("Login")
         .authButtonDecoration()
@@ -67,7 +65,8 @@ private extension LoginView {
 
   func signUpButton() -> some View {
     Button(action: {
-      self.viewModel.createUser(with: .credentials)
+      // self.viewModel.createUser(with: .credentials)
+      router.navigateToHome()
     }) {
       Text("Create Account")
         .authButtonDecoration()
