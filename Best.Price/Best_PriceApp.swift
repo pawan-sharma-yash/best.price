@@ -44,17 +44,18 @@ struct Best_PriceApp: App {
 
   var body: some Scene {
     WindowGroup {
-      NavigationStack {
-        switch router.currentRoute {
-        case .authenticatedUser:
-          HomeView()
-            .onAppear { /* Load user data */ }
-        case .unAuthenticatedUser:
-          LoginView()
-            .onAppear { /* Prepare login */ }
-        }
-      }
+      contentView()
     }
     .environmentObject(router)
+  }
+
+  @ViewBuilder
+  private func contentView() -> some View {
+    switch router.currentRoute {
+    case .authenticatedUser:
+      HomeView()
+    case .unAuthenticatedUser:
+      LoginView()
+    }
   }
 }
