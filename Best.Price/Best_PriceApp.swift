@@ -22,6 +22,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct Best_PriceApp: App {
   // https://stackoverflow.com/a/62633158/1568609
   @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
+  @State private var isLoggedIn = false
   var body: some Scene {
     WindowGroup {
       LoginView()

@@ -32,7 +32,7 @@ final class LoginViewModel: ObservableObject {
     // Combine email and password validation
     Publishers.CombineLatest($email, $password)
       .map { [weak self] email, password in
-        guard let self else { return false }
+        guard let _ = self else { return false }
         return Validator.isValidEmail(email) && Validator.isValidPassword(password)
       }
       .assign(to: \.isCredentialsValid, on: self)
