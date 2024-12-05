@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct CategoriesView: View {
   @State private var notes = ""
   var body: some View {
     Text("Hello World!")

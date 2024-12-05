@@ -8,7 +8,6 @@
 import Combine
 import Foundation
 import FirebaseAuth
-import OSLog
 
 final class LoginViewModel: ObservableObject {
   @Published var email = ""
@@ -26,12 +25,6 @@ final class LoginViewModel: ObservableObject {
 
   init() {
     setupPublishers()
-    Logger.general.error("Database connection failed.")
-    Logger.general.trace("This is a message for tracing the log")
-    Logger.general.critical("This message is critical")
-    Logger.general.warning("This message should be treated as warning.")
-    Logger.general.notice("This message should bring in the notice.")
-    Logger.general.fault("A fault should look like")
   }
 
   private func setupPublishers() {

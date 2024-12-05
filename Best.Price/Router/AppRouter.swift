@@ -30,7 +30,7 @@ extension Best_PriceApp {
   func contentView() -> some View {
     switch router.currentRoute {
     case .authenticatedUser:
-      HomeView()
+      CategoriesView()
     case .unAuthenticatedUser:
       LoginView()
     }
