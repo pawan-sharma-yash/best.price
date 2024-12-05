@@ -19,14 +19,19 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 final class AppRouter: ObservableObject {
-  @Published var currentView: String = "LoginView" // Default to LoginView
+  fileprivate enum Route {
+    case unAuthenticatedUser
+    case authenticatedUser
+  }
+
+  @Published fileprivate var currentRoute: Route = .unAuthenticatedUser
 
   func navigateToHome() {
-    currentView = "HomeView"
+    currentRoute = .authenticatedUser
   }
 
   func navigateToLogin() {
-    currentView = "LoginView"
+    currentRoute = .unAuthenticatedUser
   }
 }
 
@@ -40,15 +45,13 @@ struct Best_PriceApp: App {
   var body: some Scene {
     WindowGroup {
       NavigationStack {
-        switch router.currentView {
-        case "HomeView":
+        switch router.currentRoute {
+        case .authenticatedUser:
           HomeView()
             .onAppear { /* Load user data */ }
-        case "LoginView":
+        case .unAuthenticatedUser:
           LoginView()
             .onAppear { /* Prepare login */ }
-        default:
-          LoginView()
         }
       }
     }
