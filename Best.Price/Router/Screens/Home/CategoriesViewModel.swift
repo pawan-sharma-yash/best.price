@@ -1,21 +1,19 @@
 //
-//  HomeViewModel.swift
+//  CategoriesViewModel.swift
 //  Best.Price
 //
 //  Created by Pawan Sharma on 03/12/2024.
 //
 
-import Foundation
-import SwiftUI
 import FirebaseFirestore
+import Foundation
 import OSLog
-
-struct Category {
-  let title: String
-  let iconURL: String
-}
+import SwiftUI
+import Models
 
 final class CategoriesViewModel: ObservableObject {
+  @Published var categories: [ProductCategory] = []
+
   init() {
     fetchFirestoreCategories()
   }
@@ -30,26 +28,16 @@ final class CategoriesViewModel: ObservableObject {
         let snapshot = try await categoriesCollection.getDocuments()
 
         // Iterate through the documents and extract the data
-        let categories = snapshot.documents.compactMap { document -> Category? in
-          guard let title = document.data()["title"] as? String,
-                let iconURL = document.data()["icon-url"] as? String else {
-            return nil
-          }
-          return Category(title: title, iconURL: iconURL)
+        categories = snapshot.documents.compactMap { document -> ProductCategory? in
+          let data = document.data()
+          guard let title = data["title"] as? String,
+                let iconURL = data["icon-url"] as? String
+          else { return nil }
+          return ProductCategory(title: title, iconURL: iconURL)
         }
-
-        // Process the fetched categories
-        processCategories(categories)
       } catch {
         Logger.general.debug("Error fetching Firestore categories: \(error.localizedDescription)")
       }
-    }
-  }
-
-  private func processCategories(_ categories: [Category]) {
-    // Handle the fetched categories here
-    for category in categories {
-      print("Category: \(category.title), Icon URL: \(category.iconURL)")
     }
   }
 }

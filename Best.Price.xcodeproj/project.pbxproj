@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -50,6 +50,7 @@
 		F2D546AC2D0043CD008D9719 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D546AB2D0043CD008D9719 /* NotesView.swift */; };
 		F2D546AF2D01AF00008D9719 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D546AE2D01AF00008D9719 /* AppRouter.swift */; };
 		F2D546B12D01B3D8008D9719 /* Logger+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D546B02D01B3D8008D9719 /* Logger+Extension.swift */; };
+		F2D546B92D02CCC1008D9719 /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = F2D546B82D02CCC1008D9719 /* Models */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 				1710C2632ABE0C43008A551B /* FirebaseDynamicLinks in Frameworks */,
 				1710C2672ABE0C43008A551B /* FirebaseFirestoreCombine-Community in Frameworks */,
 				1710C2772ABE0C43008A551B /* FirebaseMessaging in Frameworks */,
+				F2D546B92D02CCC1008D9719 /* Models in Frameworks */,
 				1710C2732ABE0C43008A551B /* FirebaseInstallations in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,6 +304,7 @@
 				1710C27C2ABE0C43008A551B /* FirebaseRemoteConfigSwift */,
 				1710C27E2ABE0C43008A551B /* FirebaseStorage */,
 				1710C2802ABE0C43008A551B /* FirebaseStorageCombine-Community */,
+				F2D546B82D02CCC1008D9719 /* Models */,
 			);
 			productName = Best.Price;
 			productReference = 1710C21C2ABE0AE8008A551B /* Best.Price.app */;
@@ -377,6 +380,7 @@
 			mainGroup = 1710C2132ABE0AE8008A551B;
 			packageReferences = (
 				1710C24B2ABE0C42008A551B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				F2D546B72D02CCC1008D9719 /* XCLocalSwiftPackageReference "Packages/Models" */,
 			);
 			productRefGroup = 1710C21D2ABE0AE8008A551B /* Products */;
 			projectDirPath = "";
@@ -759,6 +763,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		F2D546B72D02CCC1008D9719 /* XCLocalSwiftPackageReference "Packages/Models" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/Models;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		1710C24B2ABE0C42008A551B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -905,6 +916,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1710C24B2ABE0C42008A551B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
+		};
+		F2D546B82D02CCC1008D9719 /* Models */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Models;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
