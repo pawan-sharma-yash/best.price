@@ -75,12 +75,12 @@ extension Best_PriceApp {
         }
       CategoriesView()
         .tabItem {
-          Image(systemName: "person.circle.fill")
+          Image(systemName: "creditcard.circle")
           Text("Free Credit")
         }
       CategoriesView()
         .tabItem {
-          Image(systemName: "phone.circle")
+          Image(systemName: "list.bullet")
           Text("Orders")
         }
     }
