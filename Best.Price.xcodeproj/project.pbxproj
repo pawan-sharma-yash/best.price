@@ -236,13 +236,13 @@
 			path = UIComponents;
 			sourceTree = "<group>";
 		};
-		F2D546A62CFF4425008D9719 /* Home */ = {
+		F2D546A62CFF4425008D9719 /* CategoriesView */ = {
 			isa = PBXGroup;
 			children = (
 				F2D546A72CFF443B008D9719 /* CategoriesView.swift */,
 				F2D546A92CFF4454008D9719 /* CategoriesViewModel.swift */,
 			);
-			path = Home;
+			path = CategoriesView;
 			sourceTree = "<group>";
 		};
 		F2D546AD2D01AEF8008D9719 /* Router */ = {
@@ -257,7 +257,7 @@
 		F2D546B22D01DF1C008D9719 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				F2D546A62CFF4425008D9719 /* Home */,
+				F2D546A62CFF4425008D9719 /* CategoriesView */,
 				179C42BF2ACB310600DFD2F5 /* Login */,
 			);
 			path = Screens;

@@ -5,21 +5,24 @@
 //  Created by Pawan Sharma on 09/12/24.
 //
 import SwiftUI
+import Models
 
 struct CategoryCard: View {
-  let category: Category
+  let category: ProductCategory
 
   var body: some View {
     ZStack {
-      Image(category.image)
-        .resizable()
-        .aspectRatio(contentMode: .fit)
-        .frame(height: 120)
-        .padding()
-
       VStack {
+        AsyncImage(url: URL(string: category.iconURL)) { image in
+          image
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+        } placeholder: {
+          ProgressView()
+        }
+
         Spacer()
-        Text(category.name)
+        Text(category.title)
           .font(.system(size: 16, weight: .medium))
           .multilineTextAlignment(.center)
           .frame(alignment: .top)

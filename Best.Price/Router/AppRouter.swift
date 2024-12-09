@@ -26,13 +26,73 @@ final class AppRouter: ObservableObject {
 }
 
 extension Best_PriceApp {
+  fileprivate func unAuthenticatedUserFlow() -> some View {
+    TabView {
+      CategoriesView()
+        .tabItem {
+          Image(systemName: "house")
+          Text("Home")
+        }
+      CategoriesView()
+        .tabItem {
+          Image(systemName: "squareshape.split.2x2")
+          Text("Categories")
+        }
+      LoginView()
+        .tabItem {
+          Image(systemName: "person.circle.fill")
+          Text("Login Now")
+        }
+      CategoriesView()
+        .tabItem {
+          Image(systemName: "percent")
+          Text("Offers")
+        }
+      CategoriesView()
+        .tabItem {
+          Image(systemName: "phone.circle")
+          Text("Help")
+        }
+    }
+  }
+
+  fileprivate func authenticatedUserFlow() -> some View {
+    TabView {
+      CategoriesView()
+        .tabItem {
+          Image(systemName: "house")
+          Text("Home")
+        }
+      CategoriesView()
+        .tabItem {
+          Image(systemName: "squareshape.split.2x2")
+          Text("Categories")
+        }
+      CategoriesView()
+        .tabItem {
+          Image(systemName: "percent")
+          Text("Offers")
+        }
+      CategoriesView()
+        .tabItem {
+          Image(systemName: "person.circle.fill")
+          Text("Free Credit")
+        }
+      CategoriesView()
+        .tabItem {
+          Image(systemName: "phone.circle")
+          Text("Orders")
+        }
+    }
+  }
+
   @ViewBuilder
   func contentView() -> some View {
     switch router.currentRoute {
     case .authenticatedUser:
-      CategoriesView()
+      authenticatedUserFlow()
     case .unAuthenticatedUser:
-      LoginView()
+      unAuthenticatedUserFlow()
     }
   }
 }
