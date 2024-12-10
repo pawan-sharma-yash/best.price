@@ -18,7 +18,9 @@ struct CategoryCard: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
         } placeholder: {
-          ProgressView()
+          Image("placeholder-image")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
         }
 
         Spacer()

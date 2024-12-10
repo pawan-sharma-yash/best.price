@@ -20,6 +20,7 @@ final class CategoriesViewModel: ObservableObject {
   }
 
   nonisolated private func fetchFirestoreCategories() {
+  private func fetchFirestoreCategories() {
     Task {
       do {
         // Get a reference to Firestore
@@ -32,10 +33,11 @@ final class CategoriesViewModel: ObservableObject {
           // Iterate through the documents and extract the data
           categories = snapshot.documents.compactMap { document -> ProductCategory? in
             let data = document.data()
+            let id = document.documentID
             guard let title = data["title"] as? String,
                   let iconURL = data["icon-url"] as? String
             else { return nil }
-            return ProductCategory(title: title, iconURL: iconURL)
+            return ProductCategory(title: title, iconURL: iconURL, id: id)
           }
         }
       }

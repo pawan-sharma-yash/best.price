@@ -70,7 +70,7 @@ final class LoginViewModel: ObservableObject {
         return isValid ? nil : "Password must be at least 8 characters."
     }
 
-    func createUser(with provider: AuthenticationProvider) {
+   func createUser(with provider: AuthenticationProvider) {
         switch provider {
         case .credentials:
             Task {
