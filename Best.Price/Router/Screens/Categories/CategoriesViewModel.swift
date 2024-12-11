@@ -37,6 +37,7 @@ final class CategoriesViewModel: ObservableObject {
             else { return nil }
             return ProductCategory(title: title, id: id)
           }
+          .sorted(by: { $0.title < $1.title })
         }
       }
     }
