@@ -8,15 +8,35 @@ import SwiftUI
 import Models
 
 struct SubCategoryView: View {
-  let category: ProductCategory
+  @StateObject var viewModel: SubcategoriesViewModel
+
   var body: some View {
-    Group {
-      Text(category.title)
+    VStack(spacing: 0) {
+      // Grid
+      ScrollView {
+        LazyVGrid(columns: [
+          GridItem(.flexible()),
+          GridItem(.flexible()),
+          GridItem(.flexible()),
+        ], spacing: 16) {
+          ForEach(viewModel.subcategories) { subcategory in
+            SubcategoryCard(subcategory: subcategory)
+          }
+        }
+        .padding()
+      }
     }
-    .navigationTitle(category.title)
+    .navigationTitle(viewModel.category.title)
   }
 }
 
 #Preview {
-  SubCategoryView(category: .init(title: "Beverage", id: "abc"))
+  SubCategoryView(
+    viewModel: SubcategoriesViewModel(
+      category: ProductCategory(
+        title: "Beverage",
+        id: "abc"
+      )
+    )
+  )
 }

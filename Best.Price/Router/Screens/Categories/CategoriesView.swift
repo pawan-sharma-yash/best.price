@@ -32,7 +32,7 @@ struct CategoriesView: View {
       }
       .navigationBarTitle("Categories")
       .navigationDestination(for: ProductCategory.self) { item in
-        SubCategoryView(category: item)
+        SubCategoryView(viewModel: SubcategoriesViewModel(category: item))
       }
       .navigationBarItems(trailing: Button(action: {
         // Action for the bar button item
