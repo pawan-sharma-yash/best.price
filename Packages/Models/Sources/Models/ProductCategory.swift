@@ -1,4 +1,4 @@
-public struct ProductCategory: Identifiable {
+public struct ProductCategory: Identifiable, Hashable {
   public let title: String
   public var id: String
 

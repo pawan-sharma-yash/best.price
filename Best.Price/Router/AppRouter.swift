@@ -58,7 +58,7 @@ extension Best_PriceApp {
 
   fileprivate func authenticatedUserFlow() -> some View {
     TabView {
-      SubCategoryView()
+      CategoriesView()
         .tabItem {
           Image(systemName: "house")
           Text("Home")
