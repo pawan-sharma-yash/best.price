@@ -33,10 +33,9 @@ final class CategoriesViewModel: ObservableObject {
           categories = snapshot.documents.compactMap { document -> ProductCategory? in
             let data = document.data()
             let id = document.documentID
-            guard let title = data["title"] as? String,
-                  let iconURL = data["icon-url"] as? String
+            guard let title = data["title"] as? String
             else { return nil }
-            return ProductCategory(title: title, iconURL: iconURL, id: id)
+            return ProductCategory(title: title, id: id)
           }
         }
       }
