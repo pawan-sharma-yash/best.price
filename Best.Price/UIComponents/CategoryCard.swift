@@ -13,15 +13,9 @@ struct CategoryCard: View {
   var body: some View {
     ZStack {
       VStack {
-        AsyncImage(url: URL(string: category.iconURL)) { image in
-          image
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-        } placeholder: {
-          Image("placeholder-image")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-        }
+        Image(category.title)
+          .resizable()
+          .aspectRatio(contentMode: .fit)
 
         Spacer()
         Text(category.title)

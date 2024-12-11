@@ -19,7 +19,6 @@ final class CategoriesViewModel: ObservableObject {
     fetchFirestoreCategories()
   }
 
-  nonisolated private func fetchFirestoreCategories() {
   private func fetchFirestoreCategories() {
     Task {
       do {
