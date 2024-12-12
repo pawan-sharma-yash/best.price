@@ -20,13 +20,29 @@ struct SubCategoryView: View {
           GridItem(.flexible()),
         ], spacing: 16) {
           ForEach(viewModel.subcategories) { subcategory in
-            SubcategoryCard(subcategory: subcategory)
+            NavigationLink(value: subcategory) {
+              SubcategoryCard(subcategory: subcategory)
+            }
           }
         }
         .padding()
       }
     }
     .navigationTitle(viewModel.category.title)
+    .navigationDestination(for: ProductSubcategory.self) { item in
+      DetialView(subcategory: item)
+    }
+  }
+}
+
+struct DetialView: View {
+  let subcategory: ProductSubcategory
+  var body: some View {
+    Group {
+      Text(subcategory.id)
+      Text(subcategory.title)
+    }
+    .navigationTitle(subcategory.title)
   }
 }
 

@@ -1,13 +1,5 @@
 //
-//  CategoryCard 2.swift
-//  Best.Price
-//
-//  Created by Pawan Sharma on 11/12/2024.
-//
-
-
-//
-//  CategoryCard.swift
+//  SubcategoryCard.swift
 //  Best.Price
 //
 //  Created by Pawan Sharma on 09/12/24.
@@ -21,16 +13,24 @@ struct SubcategoryCard: View {
   var body: some View {
     ZStack {
       VStack {
-        Image(subcategory.title)
-          .resizable()
-          .aspectRatio(contentMode: .fit)
-
+        AsyncImage(url: URL(string: subcategory.imageLink ?? "")) { phase in
+          if let image = phase.image {
+            image
+              .resizable()
+              .aspectRatio(contentMode: ContentMode.fit)
+          } else if phase.error != nil {
+            Color.red // Indicates an error.
+          } else {
+            Color.blue // Acts as a placeholder.
+          }
+        }
         Spacer()
         Text(subcategory.title)
           .font(.system(size: 16, weight: .medium))
           .multilineTextAlignment(.center)
           .frame(alignment: .top)
           .padding([.leading, .trailing], 4)
+          .foregroundStyle(Color.black)
       }
       .padding(.bottom)
     }

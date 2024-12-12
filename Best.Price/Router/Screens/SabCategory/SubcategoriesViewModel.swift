@@ -31,7 +31,11 @@ final class SubcategoriesViewModel: ObservableObject {
         let subcategoryRef = db
           .collection("categories")
           .document(category.id)
-        let snapshot = try await subcategoryRef.collection(category.title).getDocuments()
+
+        let snapshot = try await subcategoryRef
+          .collection(category.title)
+          .getDocuments()
+
         OperationQueue.main.addOperation { [unowned self] in
           // Iterate through the documents and extract the data
           subcategories = snapshot.documents.compactMap { document -> ProductSubcategory? in
@@ -39,7 +43,8 @@ final class SubcategoriesViewModel: ObservableObject {
             let id = document.documentID
             guard let title = data["title"] as? String
             else { return nil }
-            return ProductSubcategory(title: title, id: id)
+            let imageLink = data["image"] as? String
+            return ProductSubcategory(title: title, id: id, imageLink: imageLink)
           }
           .sorted(by: { $0.title < $1.title })
         }

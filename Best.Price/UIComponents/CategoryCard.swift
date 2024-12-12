@@ -22,6 +22,7 @@ struct CategoryCard: View {
           .font(.system(size: 16, weight: .medium))
           .multilineTextAlignment(.center)
           .frame(alignment: .top)
+          .foregroundStyle(Color.black)
       }
       .padding(.bottom)
     }
